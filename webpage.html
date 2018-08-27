@@ -1,0 +1,145 @@
+﻿<!doctype html>
+	<html ng-app="oyayaApp" ng-controller="MainController">
+		<head >
+			<meta charset="UTF-8">
+			<title>OYAYA</title>
+			<link rel="icon" href="images/favicon.ico" />
+			<!-- Use CDN to connect to JQuery -->
+			<script src="js/jquery.min.js"></script>
+		
+			<script src="./node_modules/angular/angular.js" type="text/javascript" ></script>
+	        <script src="./node_modules/angular-animate/angular-animate.js" type="text/javascript" ></script>
+	        <script src="./node_modules/angular-aria/angular-aria.js" type="text/javascript"></script>
+	        <script src="./node_modules/angular-material/angular-material.js" type="text/javascript" ></script>
+
+	        <script src="node_modules/angular-route/angular-route.js"></script>
+	        <script src="node_modules/angular-resource/angular-resource.js"></script>  
+
+	        <script src="js/mainController.js"></script>
+			<link rel="stylesheet" type="text/css" href="css/page.css">
+
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+			<!-- Optional theme -->
+			<link rel="stylesheet" href="css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+			<!-- Latest compiled and minified JavaScript -->
+			<script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		</head>
+		<body>
+			<div id="frame-group">
+				<div id="opening-frame" class="frame" name="openingFrame">
+					<div class="custom-container">
+						<img src="images/1/1.png" class="full-screen" alt="Oyaya on desk">
+						<button type="button" id="scroll-button" ng-click="scrollToForm()">0元试用</button>
+						<label class="frame-subheader-label frame-one-accent" id="scroll-button-label">创意玩具&emsp;&ensp;桌面摆件</label>
+					</div>
+					
+				</div>
+
+				<div id="video-frame" class="frame col-orient video-frame">
+					<img src="images/2/2.png" class="full-screen" alt="Still from Oyaya promo video">
+					<label class="frame-header-label frame-title-centered frame-two-accent">表情模仿</label>
+					<label class="frame-subheader-label frame-subtitle-centered frame-two-accent">我已经学会超过10种表情啦！快来和我玩！人家是好学宝宝~</label>
+					<div id="playButton" ng-click="playVideo()"></div>
+
+					<div id=vidModal class="modal">
+						<div class="modal-content">
+							<video id="oyaya-video" controls><source src="images/2/oyaya_video.mp4" type="video/mp4"></video>
+						</div>
+					</div>
+				</div>
+
+				<div id="speech-frame" class="frame">
+					<img src="images/3/3.png" class="full-screen" alt="Model speaking to Oyaya">
+					<label class="frame-header-label speech-header-label speech-text-accent">语音调戏</label>
+					<label class="frame-subheader-label speech-subheader-label">拥有独特的怪物嗓音和语言能力，能识别超过30句常用语。无聊时和我<br/>解锁有趣对话吧!</label>
+					 <img src="images/3/hi1.png" class="speech-bubble-1 speech-bubble" alt="First speech bubble" id="speech-bubble-1">
+					 <img src="images/3/hi2.png" class="speech-bubble-2 speech-bubble" alt="Second speech bubble" id="speech-bubble-2">
+					 <img src="images/3/hi3.png" class="speech-bubble-3 speech-bubble" alt="Third speech bubble" id="speech-bubble-3">
+					 <img src="images/3/hi4.png" class="speech-bubble-4 speech-bubble" alt="Fourth speech bubble" id="speech-bubble-4">
+				</div>
+
+				<div id="shake-frame" class="frame col-orient">
+					<label class="frame-header-label frame-title-centered frame-four-accent">手中把玩</label>
+					<label class="frame-subheader-label frame-subtitle-centered frame-four-accent-2">啊！你在对我做什么？快放开我！</label>
+					<img src="images/4/1.gif" class="shake-frame-img img-1">
+					<img src="images/4/2.gif" class="shake-frame-img img-2">
+					<img src="images/4/3.gif" class="shake-frame-img img-3">
+					<img src="images/4/Group 22.png" class="shake-frame-img img-1 still-img">
+					<img src="images/4/Group 23.png" class="shake-frame-img img-2 still-img">
+					<img src="images/4/Group 24.png" class="shake-frame-img img-3 still-img">
+				</div>
+
+				<div id="stats-frame" class="frame col-orient">
+					<img src="images/5/5.png" class="full-screen" alt="Phone stills of the Oyaya app">
+					<label class="frame-header-label frame-title-centered frame-five-accent">心情日记</label>
+					<label class="frame-subheader-label frame-subtitle-centered frame-five-accent">每天都在默默观察主人的心情，我的眼里只有你</label>
+				</div>
+
+				<div id="animate-frame" class="frame">
+					<div id='oyayaAnimation' class="animate"></div>
+
+					<label class="frame-subheader-label frame-six-accent">拖拽查看产品细节&emsp;&emsp;&ensp;选择颜色&emsp;</label>
+					<div class="white-button-sprite egg-button button-sprite-still" id="white-button-sprite" ng-click="addAnimation('white')"><img class="button-arrow" src="images/6/green-arrow.png"></div>
+					<div class="blue-button-sprite egg-button button-sprite-still" ng-click="addAnimation('blue')" id="blue-button-sprite"><img class="button-arrow" src="images/6/white-arrow.png"></div>
+					<div class="orange-button-sprite egg-button button-sprite-still" ng-click="addAnimation('orange')" id="orange-button-sprite"><img class="button-arrow" src="images/6/white-arrow.png"></div>
+					<div class="gray-button-sprite egg-button button-sprite-still" ng-click="addAnimation('gray')" id="gray-button-sprite"><img class="button-arrow" src="images/6/white-arrow.png"></div>
+					<div class="brown-button-sprite egg-button button-sprite-still" ng-click="addAnimation('brown')" id="brown-button-sprite"><img class="button-arrow" src="images/6/white-arrow.png"></div>
+				</div>
+
+				<div id="spec-frame" class="frame">		
+					<img src="images/7/7.png" class="full-screen" alt="Description of Oyaya specs">
+					<span class="frame-subheader-label stats-group-1 frame-seven-accent">性别&emsp;男<br/>年龄&emsp;5岁<br/>身高&emsp;17cm</span>
+					<span class="frame-subheader-label stats-group-2 frame-seven-accent">体重&emsp;480g<br/>脸型&emsp;大饼脸<br/>腿长&emsp;10cm</span>
+					<span class="frame-subheader-label stats-group-3 frame-seven-accent">来自R星球的Monster<br/>害羞胆小，不擅社交，性情单纯，热心有责任感，常常<br/>自娱自乐，被夸奖会非常高兴</span>
+				</div>
+
+				<div id="user-form-frame" class="frame" name="userFormFrame">
+					<div class="form-row">
+						<img src="images/8/8.png" alt="Oyaya kissy face" id="kissy-oyaya-img">
+						<div class="frame-subsection" id="userForm">
+							<label class="frame-header-label form-accent form-0-1">主人！快领我回家吧！</label>
+							<div class="form-obj form-1-1">
+								<label class="form-label form-accent">请留下您任一联系方式，感谢您喜欢我们的产品!</label>
+								<input type="text" class="form-row-height form-row-width single-form-row form-input form-label" ng-model="form.comData" placeholder="手机号/QQ号/邮箱/微博" style='font-size: 1.5vw;'>
+							</div>
+
+							<div class="form-row">
+								<div class="form-obj form-2-1">
+									<label class="form-label form-accent">我该怎么称呼您</label>
+									<input type="text" ng-model="form.clientName" class="form-row-height form-row-width form-input form-label" style='font-size: 1.5vw;' placeholder="花名">
+								</div>
+
+								<div class="form-obj form-2-2">
+									<label class="form-label form-accent">城市</label>
+								 	<input type="text" ng-model="form.city" class="form-row-height form-row-width-2 form-input form-label" style='font-size: 1.5vw;' placeholder="北京">
+								</div>
+							</div>
+
+							<div class="form-row-center form-3-1">
+								<button type="button" class="big-button single-form-row spaced-column" id="submitFormButton" ng-click="submitForm()">免费试用</button>
+							</div>	
+
+							<div class="submit-success-div" ng-show="form.submitSuccess">
+								<img class="check-button" src="images/8/Oval 10.png">
+								<label class="submit-success-label form-label" style="color: white;">资料已提交成功，我们会尽快联系您</label>
+							</div>
+						</div>
+					</span>
+				</div>
+
+			</div>	
+			<div id="bottom-toolbar" class="bar-frame">
+				<div class="bar-image" id="seed-logo"><img src="images/9/Group 14.png" class="bar-image"></div>
+				<div class="bar-image" id="qr-code"><img src="images/9/qr_code.png" class='bar-image'></div>
+				<label class="frame-subheader-label label-1">Seed Design<br/>地址：北京市海淀区上地西路6号</label>
+				<label class="frame-subheader-label label-2">公众号<br/>Seeeddesign</label>
+				<label class="frame-subheader-label label-3">联系电话：18519571889<br/>邮箱：OYaYa@sina.com<br/>微博：OYaYa@sina.com</label>
+			</div>	
+		</body>
+	</html>
